@@ -161,16 +161,78 @@ The playbook bellow installs Filebeat on target hosts. The playbook for installi
       name: filebeat
       enabled: yes
       
-      
+  Using the Playbooks
+In order to use the playbooks, you will need to have an Ansible control node alreadyconfigured. We use the jump box for this purpose.
+To use the playbooks, we must perform the following steps:
+   - Copy the playbooks to the Ansible Control Node
+   - Run each playbook on the appropriate targets
+The easiest way to copy the playbooks is to use Git:    
 
+   $cd /etc/ansible/files
+   #Clone Repository + IaC Files
+   $ git clone https://github.com/Pr3da2r/Project1-Cyber-UCLA.git
+   # mkdir Ansible Diagrams Linux
+   # Move Playbooks and hosts file Into '/etc/ansible/files/Project1-Cyber-UCLA/Ansible'
+   $ cp install-elk.yml metricbet-playbook.yml filebeat-playbook.yml /etc/ansible/files/Project1-Cyber-UCLA/Ansible
+   $ cp hosts /etc/ansible/files/Project1-Cyber-UCLA/Ansible/
 
+Next, you must create a hosts file to specify which VMs to run each playbook on, like the bellow file:
+ # This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
 
+# Ex 1: Ungrouped hosts, specify before any group headers.
 
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
 
+# Ex 2: A collection of hosts belonging to the 'webservers' group
 
+[webservers]
+10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+10.0.0.7 ansible_python_interpreter=/usr/bin/python3
+[Elk]
+10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
 
+# If you have multiple hosts following a pattern you can specify
+# them like this:
 
+## www[001:006].example.com
 
+# Ex 3: A collection of database servers in the 'dbservers' group
 
+## [dbservers]
+##
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+ 
+After this, the commands below run the playbook:
+$cd /etc/ansible 
+$ ansible-playbook install-elk.yml
+$ ansible-playbook filebeat-playbook.yml
+$ ansible-playbook metricbeat-playbook.yml
+To verify success, wait five minutes to give ELK time to start up.
+Then, run:
+curl http://10.1.0.4:5601. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
 
 
