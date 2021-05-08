@@ -59,7 +59,7 @@ The following screenshot displays the result of running docker ps after successf
 ![image](https://user-images.githubusercontent.com/77358715/117213001-e6eb6280-adaf-11eb-9334-3630a8dc1ed6.png)
 
 The playbook is duplicated bellow:
-
+```
 ---
 - name: Configure Elk VM with Docker
   hosts: Elk
@@ -117,7 +117,7 @@ The playbook is duplicated bellow:
       systemd:
         name: docker
         enabled: yes
-
+```
 
 Target Machines & Beats
 
@@ -131,6 +131,7 @@ These Beats allow us to collect the following information from each machine:
 
 The playbook bellow installs Filebeat on target hosts. The playbook for installing Metricbeat is similar we just have to replace filebeat with metricbeat, and it will work as expected.
 
+```
 ---
 - name: installing and launching filebeat
   hosts:  webservers
@@ -160,8 +161,9 @@ The playbook bellow installs Filebeat on target hosts. The playbook for installi
     systemd:
       name: filebeat
       enabled: yes
-      
-  Using the Playbooks
+```
+ 
+ Using the Playbooks
 In order to use the playbooks, you will need to have an Ansible control node alreadyconfigured. We use the jump box for this purpose.
 To use the playbooks, we must perform the following steps:
    - Copy the playbooks to the Ansible Control Node
@@ -177,6 +179,8 @@ The easiest way to copy the playbooks is to use Git:
    $ cp hosts /etc/ansible/files/Project1-Cyber-UCLA/Ansible/
 
 Next, you must create a hosts file to specify which VMs to run each playbook on, like the bellow file:
+
+```
  # This is the default ansible 'hosts' file.
 #
 # It should live in /etc/ansible/hosts
@@ -225,6 +229,7 @@ Next, you must create a hosts file to specify which VMs to run each playbook on,
 # leading 0s:
 
 ## db-[99:101]-node.example.com
+```
  
 After this, the commands below run the playbook:
 $cd /etc/ansible 
