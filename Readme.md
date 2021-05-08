@@ -169,7 +169,7 @@ To use the playbooks, we must perform the following steps:
    - Copy the playbooks to the Ansible Control Node
    - Run each playbook on the appropriate targets
 The easiest way to copy the playbooks is to use Git:    
-
+```
    $cd /etc/ansible/files
    #Clone Repository + IaC Files
    $ git clone https://github.com/Pr3da2r/Project1-Cyber-UCLA.git
@@ -177,7 +177,7 @@ The easiest way to copy the playbooks is to use Git:
    # Move Playbooks and hosts file Into '/etc/ansible/files/Project1-Cyber-UCLA/Ansible'
    $ cp install-elk.yml metricbet-playbook.yml filebeat-playbook.yml /etc/ansible/files/Project1-Cyber-UCLA/Ansible
    $ cp hosts /etc/ansible/files/Project1-Cyber-UCLA/Ansible/
-
+```
 Next, you must create a hosts file to specify which VMs to run each playbook on, like the bellow file:
 
 ```
