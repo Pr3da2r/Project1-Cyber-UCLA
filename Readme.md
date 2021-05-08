@@ -27,7 +27,7 @@ In addition a load balancer was provisioned in front of all the Web Servers exce
 ELK Server Configuration
 
 The ELK VM exposes an Elastic Stack instance. Docker is used to download and manage anELK container.
-In order to configure Elk on a more efficient manner we deployed a reusable Ansible Playbook to accomplish the task. To use this playbook, one must log into the Jump Box start the docker container which holds all the configuration and playbook (.yml) files, then in order to deploy this automation configuratio of the Elk-Stack we must issue the following commands whithingn the conontainer: ansible-playbook install-elk.yml
+In order to configure Elk on a more efficient manner we deployed a reusable Ansible Playbook to accomplish the task. To use this playbook, one must log into the Jump Box start the docker container which holds all the configuration (the config files will be added to the Ansible folder as well just not presented in the Readme.md) and playbook (.yml) files, then in order to deploy this automation configuratio of the Elk-Stack we must issue the following commands whithingn the conontainer: ansible-playbook install-elk.yml
 
 Access Policies
 
